@@ -10,6 +10,10 @@ def is_directory(directory):
 def similar(string, file):
     return SequenceMatcher(None,string,file).ratio()
 
+def list_items(list):
+    for item in list:
+        print(item)
+
 def main():
     print('___ This is a simple file search tool in Python ___')
     directory=input('Enter The Directory you want to search through: ')
@@ -19,9 +23,9 @@ def main():
     for r,d,f in os.walk(directory):
         for file in f:
             if similar(string,file)>=0.5:
-                similar_files.append(file)
-
-    print(similar_files)
+                similar_files.append(os.path.join(r,file))
+    print(len(similar_files)," results found")
+    list_items(similar_files)
 
 if __name__=="__main__":
     main()
