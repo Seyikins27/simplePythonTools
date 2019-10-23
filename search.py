@@ -1,12 +1,14 @@
 import os
 from difflib import SequenceMatcher
 
+#checks if directory is a valid directory
 def is_directory(directory):
     if os.path.isdir(directory):
         return True
     print ('Enter a valid Directory')
     exit()
 
+#computes similarity between strings
 def similar(string, file):
     return SequenceMatcher(None,string,file).ratio()
 
@@ -14,6 +16,7 @@ def list_items(list):
     for item in list:
         print(item)
 
+#defines the level of string matches
 def search_level(level):
     if level=='h' or level=='H':
         return 0.8
@@ -24,6 +27,7 @@ def search_level(level):
     else:
         return 0.5
 
+#main function
 def main():
     print('___ This is a simple file search tool in Python ___')
     directory=input('Enter The Directory you want to search through: ')
